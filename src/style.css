@@ -1,0 +1,273 @@
+:root {
+  --bg-dark: #0d0d0d;
+  --bg-panel: rgba(20, 20, 25, 0.75);
+  --color-text: #e0e0e0;
+  --color-accent: #9d4edd;
+  --color-accent-hover: #c77dff;
+  --color-shadow: rgba(0, 0, 0, 0.85);
+  --font-rpg: 'Cinzel', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--color-text);
+  overflow: hidden;
+  /* Foca unicamente no mapa interativo fullscreen */
+  user-select: none;
+}
+
+/* CONTAINER MAPA */
+.map-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* Fundo Temporário Elegante; será substituído pelo código da imagem do user */
+  background-image: url('/public/map.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+}
+
+.map-container::before {
+  content: 'O codigo é um RPG';
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  font-family: var(--font-rpg);
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  letter-spacing: 2px;
+}
+
+/* MARCADORES (Cidades/Dungeons) */
+.marker {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-accent);
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 15px var(--color-accent), inset 0 0 10px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-magic 2s infinite ease-out;
+  pointer-events: none;
+}
+
+.marker:hover {
+  transform: translate(-50%, -50%) scale(1.4);
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 0 30px var(--color-accent-hover), inset 0 0 5px rgba(255, 255, 255, 0.4);
+  z-index: 20;
+}
+
+.marker-label {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  font-family: var(--font-rpg);
+  color: #fff;
+  text-shadow: 0px 4px 6px black, 0 0 10px rgba(157, 78, 221, 0.8);
+  font-size: 1.1rem;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  letter-spacing: 1px;
+}
+
+.marker:hover .marker-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@keyframes pulse-magic {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+/* MODAL EFEITO GLASSMORPHISM */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.4s ease;
+}
+
+.modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.glass-panel {
+  background: var(--bg-panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Brilho de vidro fraco */
+  border-top: 3px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
+  box-shadow: 0 15px 50px var(--color-shadow), 0 0 30px rgba(157, 78, 221, 0.15);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 90vh;
+  /* Proteção para telas pequenas */
+  overflow-y: auto;
+  /* Permite scroll se o texto/imagem forem enormes */
+  padding: 35px 40px;
+  position: relative;
+  transform: scale(1) translateY(0);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Scrollbar Personalizada Mágica com Roxo RPG */
+.glass-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.glass-panel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  /* Margem para não colar nas bordas redondas do vidro */
+  margin: 10px;
+}
+
+.glass-panel::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s;
+}
+
+.glass-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-hover);
+}
+
+.modal.hidden .glass-panel {
+  transform: scale(0.9) translateY(40px);
+}
+
+/* Botão Fechar */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  color: var(--color-accent-hover);
+  transform: rotate(90deg);
+}
+
+/* Textos e Imagem Interna */
+.rpg-title {
+  font-family: var(--font-rpg);
+  font-size: 2.3rem;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(157, 78, 221, 0.7);
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.project-img {
+  width: 100%;
+  height: auto;
+  /* Removemos a trava de 280px para seguir a imagem original */
+  max-height: 45vh;
+  /* Evita que a imagem engula a tela inteira sozinha */
+  object-fit: contain;
+  /* Garante que ela inteira ficará visível sem cortes */
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.8);
+}
+
+.project-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  color: #cccccc;
+}
+
+.modal-footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Botão de Link Estilizado Premium */
+.rpg-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #3c096c, var(--color-accent));
+  color: white;
+  padding: 14px 28px;
+  text-decoration: none;
+  font-family: var(--font-rpg);
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.rpg-btn:hover {
+  box-shadow: 0 8px 30px rgba(199, 125, 255, 0.7);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--color-accent), #e0aaff);
+  color: #121212;
+}

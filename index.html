@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio RPG</title>
+    <!-- Fontes Estilo Fantasia e Leitura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+        <!-- O fundo do mapa vai aqui. Adicionaremos a sua imagem salva como background via CSS -->
+        <div id="map-container" class="map-container">
+            <!-- Marcadores serão injetados dinamicamente via JS -->
+        </div>
+
+        <!-- Modal Glassmorphism -->
+        <div id="project-modal" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <button id="close-modal" class="close-btn">&times;</button>
+                <div class="modal-header">
+                    <h2 id="modal-title" class="rpg-title">Nome do Projeto</h2>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-image" src="" alt="Imagem do Projeto" class="project-img" />
+                    <p id="modal-desc" class="project-desc">Descrição completa do projeto vai aparecer aqui. O modal é dinâmico.</p>
+                </div>
+                <div class="modal-footer">
+                    <a id="modal-link" href="#" target="_blank" class="rpg-btn">Ver Repositório no GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script Principal -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
