@@ -1,6 +1,6 @@
-# Portfólio RPG - Estrutura e Decisões Técnicas
+# Portfólio RPG
 
-Este projeto é um portfólio interativo focado no frontend, construído em torno de uma temática de mapa de RPG. Os projetos desenvolvidos são mapeados como pontos de exploração (cidades ou masmorras). O objetivo principal é demonstrar os conhecimentos práticos aplicando estéticas modernas e código limpo.
+Este projeto é um portfólio interativo focado no frontend, construído em torno de uma temática de mapa de RPG. Os projetos desenvolvidos são mapeados como pontos de exploração (cidades ou masmorras). O objetivo principal é demonstrar os conhecimentos práticos aplicados em cada projeto de uma maneira criativa.
 
 ## Arquitetura e Estrutura Principal
 
