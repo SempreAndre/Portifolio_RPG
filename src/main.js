@@ -28,7 +28,7 @@ const projects = [
   },
   {
     id: 4,
-    title: 'YouLise',
+    title: 'O mundo gelado das APIS "YouLise"',
     description: 'Projeto para aprender o uso da api, onde é possivel consultar videos do youtube e seus metadados, os colocando para serem analisados por uma IA podendo gerar resumos, tags e até mesmo ideias de post. Como também entender o publico atravez da classificação de comentarios.',
     image: import.meta.env.BASE_URL + 'youlise.png',
     link: 'https://github.com/SempreAndre/youlise',
@@ -37,10 +37,42 @@ const projects = [
   {
     id: 5,
     title: 'Prologo',
-    description: 'Objetivos: As dificuldades que forjaram minha jornada até aqui definiram parte do que quero ser a diante.<br><br>1º Ser um profissional de TI com conhecimento em diversas areas, como desenvolvimento, segurança, infraestrutura e dados. Tendo uma visão geral de como funciona um sistema e como ele pode ser melhorado.<br><br>2º Facilitar a vida das pessoas ao meu redor por meio da tecnologia.<br><br>3º Me tornar um grande mestre de RPG, tendo visitado varios mundos e ter minhas conquistas sendo comentadas aos ventos.',
+    description: 'Objetivos: As dificuldades que forjaram minha jornada até aqui definiram parte do que quero ser a diante.<br><br>1º Ser um profissional de TI com conhecimento em diversas areas, como desenvolvimento, segurança, infraestrutura e dados. Tendo uma visão geral de como funciona um sistema e como ele pode ser melhorado.<br><br>2º Facilitar a vida das pessoas ao meu redor por meio da tecnologia.<br><br>3º Me tornar um grande mestre de RPG, tendo visitado varios mundos e tendo as minhas conquistas sendo comentadas aos ventos.',
     image: import.meta.env.BASE_URL + 'prologo.png',
     link: 'https://github.com/SempreAndre/youlise',
     pos: { top: '56.6%', left: '47.8%' } // Posição movida para a extrema direita
+  },
+  {
+    id: 6,
+    title: 'Experiencia',
+    description: 'Todo jogador de rpg que se prese tem horas de aventuras memoraveis que ecoaram na vida daqueles presentes, aqui estão algumas das minhas:<br><br> 1º Administrador de sites em wordpress na prefeitura de Jaboatão - 2020 - 2021<br><br> 2º Estagio em TI na empresa GrupoMlmenezes - 2021 - 2023<br><br> 3º Assistente de TI na empresa GrupoMlemenezes - 2023 - 2025<br><br> 4º Analista de TI JR na empresa GrupoMlemenezes - 2025 - Atual',
+    image: import.meta.env.BASE_URL + 'experiencia.png',
+    link: 'https://github.com/SempreAndre/youlise',
+    pos: { top: '60.1%', left: '32.2%' } // Posição movida para a extrema direita
+  },
+  {
+    id: 7,
+    title: 'Conhecimento',
+    description: 'Nem toda jornadas tem apenas lutas, tem estudos, dedicação e muito esforço, aqui estão alguns dos locais que passei para me tornar quem sou hoje:<br><br> 1º Universidade Federal Rural de Pernambuco - Engenharia Eletrônica(imcompleto) - 2017.2 - 2022<br><br> 2º Tecnologo em Analise e desenvolvimento de sistemas - Faculdade Catolica Imaculada da Conceição - 2024 - 2026',
+    image: import.meta.env.BASE_URL + 'conhecimento.png',
+    link: 'https://github.com/SempreAndre/youlise',
+    pos: { top: '88.7%', left: '58.2%' } // Posição movida para a extrema direita
+  },
+  {
+    id: 8,
+    title: 'O futuro',
+    description: 'Uma jornada nunca tem fim e a minha está apenas começando, nenhum bom mago fica satisfeito com as magias que possui, então aqui estão algumas habilidades que pretendo adquirir ou melhorar no futuro:<br><br> 1º Melhorar minhas habilidades em pythom, pois é uma liguagem muito versatil e excelente para analise de dados.<br><br> 2º Aprimorar minhas habilidades sociais e o meu mental pois toda jornada tem altos e baixos e o importante é como lidamos com isso.<br><br> 3º Adquirir mais experiencia em cibersegurança, pois é uma area que tem crescido muito e creio que será essencial para o futuro.',
+    image: import.meta.env.BASE_URL + 'futuro.png',
+    link: 'https://github.com/SempreAndre/youlise',
+    pos: { top: '20.3%', left: '44.7%' } // Posição movida para a extrema direita
+  },
+  {
+    id: 9,
+    title: 'Onde estou agora',
+    description: 'Para me encontrar é simples,me mande uma mensagem pelo Linkedin:<br><br> <a href="https://www.linkedin.com/in/andr%C3%A9-de-fran%C3%A7a-5572811b3/">https://www.linkedin.com/in/andr%C3%A9-de-fran%C3%A7a-5572811b3/</a>',
+    image: import.meta.env.BASE_URL + 'contato.png',
+    link: 'https://github.com/SempreAndre/youlise',
+    pos: { top: '35.0%', left: '13.3%' } // Posição movida para a extrema direita
   }
 ];
 
@@ -65,6 +97,12 @@ function generateMapMarkers() {
     // Componente do marcador pai
     const marker = document.createElement('div');
     marker.className = 'marker';
+
+    // Adiciona classe verde para projetos de história / objetivos (ID 5 ao 8)
+    if (project.id >= 5 && project.id <= 9) {
+      marker.classList.add('marker-green');
+    }
+
     marker.style.top = project.pos.top;
     marker.style.left = project.pos.left;
 
@@ -88,7 +126,13 @@ function openModal(project) {
   modalTitle.textContent = project.title;
   modalDesc.innerHTML = project.description;
   modalImage.src = project.image;
-  modalLink.href = project.link;
+
+  if (project.id >= 5 && project.id <= 9) {
+    modalLink.style.display = 'none';
+  } else {
+    modalLink.style.display = 'inline-block';
+    modalLink.href = project.link;
+  }
 
   // Efeito CSS de animação ao remover a classe hidden
   modal.classList.remove('hidden');
