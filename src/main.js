@@ -6,7 +6,7 @@ const projects = [
     id: 1,
     title: 'Cratera do coffekat',
     description: 'Desenvolvido para cadeira de dispositivos mobile usando flutter em grupo. Um exemplo de loja virtual que tem o armazenamento de seus dados no firebase.',
-    image: '/public/coffeKat.jpeg',
+    image: import.meta.env.BASE_URL + 'coffekat.jpeg',
     link: 'https://github.com/marialuisamatos/devMobile',
     pos: { top: '73.2%', left: '40.7%' } // Posição movida mais para o canto superior esquerdo
   },
@@ -22,7 +22,7 @@ const projects = [
     id: 3,
     title: 'Mausoleu dos Classify',
     description: 'Projeto para entender sistemas de alta segurança e classificação de acesso.',
-    image: '/public/Trust_doc.png',
+    image: import.meta.env.BASE_URL + 'Trust_doc.png',
     link: 'https://github.com/SempreAndre/SISTEMA_CLASSIFY_5P',
     pos: { top: '52.5%', left: '63.2%' } // Posição movida para a extrema direita
   },
@@ -30,7 +30,7 @@ const projects = [
     id: 4,
     title: 'YouLise',
     description: 'Projeto para aprender o uso da api, onde é possivel consultar videos do youtube e seus metadados, os colocando para serem analisados por uma IA podendo gerar resumos, tags e até mesmo ideias de post. Como também entender o publico atravez da classificação de comentarios.',
-    image: '/public/YouLise.png',
+    image: import.meta.env.BASE_URL + 'youlise.png',
     link: 'https://github.com/SempreAndre/youlise',
     pos: { top: '31.2%', left: '54.8%' } // Posição movida para a extrema direita
   }

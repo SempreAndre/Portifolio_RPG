@@ -30,7 +30,7 @@ body {
   width: 100vw;
   height: 100vh;
   /* Fundo Temporário Elegante; será substituído pelo código da imagem do user */
-  background-image: url('/public/map.png');
+  background-image: url('/Portifolio_RPG/map.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
