@@ -22,8 +22,8 @@ const projects = [
     id: 3,
     title: 'Mausoleu dos Classify',
     description: 'Projeto para entender sistemas de alta segurança e classificação de acesso.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
-    link: 'https://github.com/andre-franca/portifolio',
+    image: '/public/Trust_doc.png',
+    link: 'https://github.com/SempreAndre/SISTEMA_CLASSIFY_5P',
     pos: { top: '52.5%', left: '63.2%' } // Posição movida para a extrema direita
   },
   {
