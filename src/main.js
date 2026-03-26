@@ -33,6 +33,14 @@ const projects = [
     image: import.meta.env.BASE_URL + 'youlise.png',
     link: 'https://github.com/SempreAndre/youlise',
     pos: { top: '31.2%', left: '54.8%' } // Posição movida para a extrema direita
+  },
+  {
+    id: 5,
+    title: 'Prologo',
+    description: 'Objetivos: As dificuldades que forjaram minha jornada até aqui definiram parte do que quero ser a diante.<br><br>1º Ser um profissional de TI com conhecimento em diversas areas, como desenvolvimento, segurança, infraestrutura e dados. Tendo uma visão geral de como funciona um sistema e como ele pode ser melhorado.<br><br>2º Facilitar a vida das pessoas ao meu redor por meio da tecnologia.<br><br>3º Me tornar um grande mestre de RPG, tendo visitado varios mundos e ter minhas conquistas sendo comentadas aos ventos.',
+    image: import.meta.env.BASE_URL + 'prologo.png',
+    link: 'https://github.com/SempreAndre/youlise',
+    pos: { top: '56.6%', left: '47.8%' } // Posição movida para a extrema direita
   }
 ];
 
@@ -78,7 +86,7 @@ function generateMapMarkers() {
 function openModal(project) {
   // Preencher dados dinâmicos
   modalTitle.textContent = project.title;
-  modalDesc.textContent = project.description;
+  modalDesc.innerHTML = project.description;
   modalImage.src = project.image;
   modalLink.href = project.link;
 
@@ -121,7 +129,7 @@ document.addEventListener('keydown', (e) => {
 // ---- Boot Incial ----
 document.addEventListener('DOMContentLoaded', () => {
   generateMapMarkers();
-  
+
   // Exibir a telinha de boas-vindas com delay para criar o efeito de descida
   setTimeout(() => {
     welcomeModal.classList.remove('hidden');
@@ -133,7 +141,7 @@ startBtn.addEventListener('click', () => {
   welcomeModal.classList.add('hidden');
 });
 
-/*
+
 // ---- Ferramenta de Mapeamento Mágico (Apenas para te ajudar!) ----
 // Clica em qualquer lugar do mapa interativo aberto no navegador e ele te dará a posição.
 mapContainer.addEventListener('click', (e) => {
@@ -166,4 +174,4 @@ mapContainer.addEventListener('click', (e) => {
 
   setTimeout(() => toast.remove(), 6000);
 });
-*/
+
