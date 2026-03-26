@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   generateMapMarkers();
 });
 
+/*
 // ---- Ferramenta de Mapeamento Mágico (Apenas para te ajudar!) ----
 // Clica em qualquer lugar do mapa interativo aberto no navegador e ele te dará a posição.
 mapContainer.addEventListener('click', (e) => {
@@ -139,3 +140,4 @@ mapContainer.addEventListener('click', (e) => {
 
   setTimeout(() => toast.remove(), 6000);
 });
+*/
