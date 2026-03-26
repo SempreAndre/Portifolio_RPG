@@ -185,7 +185,7 @@ startBtn.addEventListener('click', () => {
   welcomeModal.classList.add('hidden');
 });
 
-
+/*
 // ---- Ferramenta de Mapeamento Mágico (Apenas para te ajudar!) ----
 // Clica em qualquer lugar do mapa interativo aberto no navegador e ele te dará a posição.
 mapContainer.addEventListener('click', (e) => {
@@ -217,5 +217,4 @@ mapContainer.addEventListener('click', (e) => {
   document.body.appendChild(toast);
 
   setTimeout(() => toast.remove(), 6000);
-});
-
+});*/
