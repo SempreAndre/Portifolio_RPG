@@ -41,6 +41,10 @@ const mapContainer = document.getElementById('map-container');
 const modal = document.getElementById('project-modal');
 const closeModalBtn = document.getElementById('close-modal');
 
+// Elementos do Modal de Boas-vindas
+const welcomeModal = document.getElementById('welcome-modal');
+const startBtn = document.getElementById('start-btn');
+
 // Elementos Internos do Modal
 const modalTitle = document.getElementById('modal-title');
 const modalImage = document.getElementById('modal-image');
@@ -95,16 +99,38 @@ modal.addEventListener('click', (e) => {
   }
 });
 
+// Fecha modal de boas-vindas ao clicar fora
+welcomeModal.addEventListener('click', (e) => {
+  if (e.target === welcomeModal) {
+    welcomeModal.classList.add('hidden');
+  }
+});
+
 // Suporte para fechar guiando o 'Esq' padrão de UX avançada
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
+  if (e.key === 'Escape') {
+    if (!modal.classList.contains('hidden')) {
+      closeModal();
+    }
+    if (!welcomeModal.classList.contains('hidden')) {
+      welcomeModal.classList.add('hidden');
+    }
   }
 });
 
 // ---- Boot Incial ----
 document.addEventListener('DOMContentLoaded', () => {
   generateMapMarkers();
+  
+  // Exibir a telinha de boas-vindas com delay para criar o efeito de descida
+  setTimeout(() => {
+    welcomeModal.classList.remove('hidden');
+  }, 300);
+});
+
+// Evento para fechar a tela de boas-vindas e iniciar a exploração
+startBtn.addEventListener('click', () => {
+  welcomeModal.classList.add('hidden');
 });
 
 /*

@@ -271,3 +271,16 @@ body {
   background: linear-gradient(135deg, var(--color-accent), #e0aaff);
   color: #121212;
 }
+
+/* Modificadores para Modal de Boas-Vindas (Descer do topo) */
+#welcome-modal.hidden .glass-panel {
+  transform: translateY(-100vh);
+}
+
+#welcome-modal .glass-panel {
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+#start-btn {
+  cursor: pointer;
+}
