@@ -15,7 +15,7 @@ const projects = [
     title: 'Test Castle',
     description: 'Projeto de testes automatizados onde simula um sistema de login e cadastro de usuários realizando testes unitarios e de estress usando selenium.',
     image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=800&q=80',
-    link: 'https://github.com/andre-franca/api-rest',
+    link: 'https://github.com/SempreAndre/FICR-Q-A',
     pos: { top: '72.8%', left: '15.8%' } // Posição movida para o terço inferior
   },
   {
@@ -30,8 +30,8 @@ const projects = [
     id: 4,
     title: 'YouLise',
     description: 'Projeto para aprender o uso da api, onde é possivel consultar videos do youtube e seus metadados, os colocando para serem analisados por uma IA podendo gerar resumos, tags e até mesmo ideias de post. Como também entender o publico atravez da classificação de comentarios.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
-    link: 'https://github.com/andre-franca/portifolio',
+    image: '/public/YouLise.png',
+    link: 'https://github.com/SempreAndre/youlise',
     pos: { top: '31.2%', left: '54.8%' } // Posição movida para a extrema direita
   }
 ];
